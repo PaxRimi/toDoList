@@ -38,7 +38,7 @@ addTask.addEventListener('click', function () {
     buttonDel.innerText = "Delete";
     // Dodaje funkcję do buttona usuwającego
     buttonDel.addEventListener('click', function () {
-        parentUl.removeChild(this.parentElement;);
+        parentUl.removeChild(this.parentElement);
     });
     // 2 Zatwierdzający zadanie
     var buttonComp = document.createElement('button');
@@ -52,6 +52,9 @@ addTask.addEventListener('click', function () {
     li.appendChild(buttonComp);
     li.appendChild(buttonDel);
 
+    // Dodaje stworzony guzik do listy
+    parentUl.appendChild(li);
+    taskInput.value = "";
 });
 
 
