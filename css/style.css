@@ -37,3 +37,8 @@
     text-transform: uppercase;
     font-weight: bold;
 }
+
+.complete {
+    text-decoration: line-through;
+    color: grey;
+}
