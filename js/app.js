@@ -82,19 +82,24 @@ addTask.addEventListener('click', function () {
         li.appendChild(buttonComp);
         li.appendChild(buttonDel);
 
-        // Dodaje stworzony guzik do listy
+        // Dodaje stworzony element do listy wedłóg priorytetu
+        //1 sprawdzam czy są już jakieś elementy do porównania
         if (child.length > 0) {
             var number = 0;
+            // pętla i numer wskazuje mi pozycje nowego elementu
             for (var i = 0; i < child.length; i++) {
                 if (Number(li.dataset.priority) > Number(child[i].dataset.priority)) {
                     number++;
                 }
             }
+            // dodaje element na miejsce wzgledem jego ważności
             if (number > 0) {
                 parentUl.insertBefore(li, child[child.length - number])
+            // w wypadku gdyby miał najniższy priprytet
             } else {
                 parentUl.appendChild(li);
             }
+        // sytuacja dla 1 elementu listy     
         } else {
         parentUl.appendChild(li)
         }
