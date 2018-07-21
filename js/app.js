@@ -43,7 +43,10 @@ addTask.addEventListener('click', function () {
     // 2 Zatwierdzający zadanie
     var buttonComp = document.createElement('button');
     buttonComp.innerText = "Complete";
-
+    //Dodaje funkcję do buttona complete
+    buttonComp.addEventListener('click', function () {
+        this.parentElement.classList.add('complete')
+    });
 
 });
 
