@@ -25,6 +25,10 @@ var taskInput = document.getElementById('taskInput');
 
 var removeComplete = document.getElementById('removeFinishedTasksButton');
 
+// Pobieram licznik zadań
+
+var counter = document.getElementById('counter');
+console.log(counter);
 
 // Dodaje funkcję dodawania elementu do listy
 
@@ -45,7 +49,9 @@ addTask.addEventListener('click', function () {
         // Dodaje funkcję do buttona usuwającego
         buttonDel.addEventListener('click', function () {
             parentUl.removeChild(this.parentElement);
+            counter.innerText--;
         });
+
         // 2 Zatwierdzający zadanie
         var buttonComp = document.createElement('button');
         buttonComp.innerText = "Complete";
@@ -54,9 +60,11 @@ addTask.addEventListener('click', function () {
             var parentClass = Array.from(this.parentElement.classList);
             console.log(parentClass);
             if (parentClass.indexOf('complete') === -1) {
-                this.parentElement.classList.add('complete')
+                this.parentElement.classList.add('complete');
+                counter.innerText--;
             } else {
                 this.parentElement.classList.remove('complete');
+                counter.innerText++;
             }
         });
         //Dodaję tekst i buttony do li
@@ -65,6 +73,7 @@ addTask.addEventListener('click', function () {
         li.appendChild(buttonDel);
 
         // Dodaje stworzony guzik do listy
+        counter.innerText++;
         parentUl.appendChild(li);
         taskInput.value = "";
     } else {
@@ -87,5 +96,7 @@ removeComplete.addEventListener('click', function () {
             })
         }
 });
+
+
 
 
