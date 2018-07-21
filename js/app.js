@@ -47,6 +47,10 @@ addTask.addEventListener('click', function () {
     buttonComp.addEventListener('click', function () {
         this.parentElement.classList.add('complete')
     });
+    //Dodaję tekst i buttony do li
+    li.innerText = text;
+    li.appendChild(buttonComp);
+    li.appendChild(buttonDel);
 
 });
 
