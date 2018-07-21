@@ -84,13 +84,19 @@ addTask.addEventListener('click', function () {
 
         // Dodaje stworzony guzik do listy
         if (child.length > 0) {
+            var number = 0;
             for (var i = 0; i < child.length; i++) {
-                if (li.dataset.priority > child[i].dataset.priority) {
-                    parentUl.insertBefore(li, child[i])
+                if (Number(li.dataset.priority) > Number(child[i].dataset.priority)) {
+                    number++;
                 }
             }
+            if (number > 0) {
+                parentUl.insertBefore(li, child[child.length - number])
+            } else {
+                parentUl.appendChild(li);
+            }
         } else {
-            parentUl.appendChild(li)
+        parentUl.appendChild(li)
         }
 
         counter.innerText++;
