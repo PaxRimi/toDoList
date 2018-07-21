@@ -21,6 +21,10 @@ var addTask = document.getElementById('addTaskButton');
 
 var taskInput = document.getElementById('taskInput');
 
+//Pobieram przycisk usuwający wypełnione zadania
+
+var removeComplete = document.getElementById('removeFinishedTasksButton');
+
 
 // Dodaje funkcję dodawania elementu do listy
 
@@ -61,6 +65,21 @@ addTask.addEventListener('click', function () {
     // Dodaje stworzony guzik do listy
     parentUl.appendChild(li);
     taskInput.value = "";
+});
+
+// Dodaje funkcje usuwającą wykonane zadania
+removeComplete.addEventListener('click', function () {
+    //sprawdzam czy lista ma elementy
+   var child = Array.from(parentUl.children);
+        if (child.length !== 0) {
+            // Jeśli lista ma elemeny sprawdzam czy są już jakieś wykonane, jeśli są usuwam.
+            child.forEach(function (element) {
+                var classArr = Array.from(element.classList)
+                if (classArr.indexOf('complete') !== -1 ) {
+                    parentUl.removeChild(element);
+                }
+            })
+        }
 });
 
 
