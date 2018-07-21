@@ -25,6 +25,11 @@ var taskInput = document.getElementById('taskInput');
 
 var removeComplete = document.getElementById('removeFinishedTasksButton');
 
+//Pobieram input określający priorytet zadania
+
+var priorityInput = document.getElementById('priorityInput');
+
+
 // Pobieram licznik zadań
 
 var counter = document.getElementById('counter');
@@ -35,12 +40,17 @@ console.log(counter);
 addTask.addEventListener('click', function () {
     // pobieram wartość inputa do li
     var text = taskInput.value;
+    var child = Array.from(parentUl.children);
 
     if (text.length > 5 && text.length < 100) {
 
         // Tworzę nowy element li do listy
         var li = document.createElement('li');
 
+        //Dodaje priorytet do elementu li
+        var priority = priorityInput.value
+        priorityInput.value = "";
+        li.setAttribute("data-priority", priority);
 
         // Tworzę dwa przyciski do elementu li
         // 1 Usuwający
@@ -73,8 +83,17 @@ addTask.addEventListener('click', function () {
         li.appendChild(buttonDel);
 
         // Dodaje stworzony guzik do listy
+        if (child.length > 0) {
+            for (var i = 0; i < child.length; i++) {
+                if (li.dataset.priority > child[i].dataset.priority) {
+                    parentUl.insertBefore(li, child[i])
+                }
+            }
+        } else {
+            parentUl.appendChild(li)
+        }
+
         counter.innerText++;
-        parentUl.appendChild(li);
         taskInput.value = "";
     } else {
         taskInput.value = "";
