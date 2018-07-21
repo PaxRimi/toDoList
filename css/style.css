@@ -1,6 +1,39 @@
+
+/* Add container flex to file */
 .flexBox {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 1000px;
     margin: 0 auto;
+}
+
+/* add style to input */
+.flexBox input {
+    width: 40%;
+    height: 25px;
+    font-size: 20px;
+}
+
+/* add style to adding button */
+
+.flexBox > button:first-of-type {
+    width: 50px;
+    height: 50px;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 50%;
+    border: 1px solid green;
+}
+
+/* add style to bottom button */
+
+.flexBox > button:last-of-type {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: grey;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
 }
