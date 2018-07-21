@@ -45,7 +45,13 @@ addTask.addEventListener('click', function () {
     buttonComp.innerText = "Complete";
     //Dodaje funkcję do buttona complete
     buttonComp.addEventListener('click', function () {
-        this.parentElement.classList.add('complete')
+        var parentClass = Array.from(this.parentElement.classList);
+            console.log(parentClass);
+        if ( parentClass.indexOf('complete') === -1) {
+            this.parentElement.classList.add('complete')
+        } else {
+            this.parentElement.classList.remove('complete');
+        }
     });
     //Dodaję tekst i buttony do li
     li.innerText = text;
