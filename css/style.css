@@ -1,44 +1,128 @@
+/*Body of the side*/
+body{
+    background-image: url("../images/notebook.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Lobster', sans-serif;
+}
+
+/*Container flex*/
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+}
 
 /* Add container flex to file */
 .flexBox {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1000px;
     margin: 0 auto;
+}
+
+/*left side style*/
+.leftSide {
+    font-size: 20px;
+}
+
+/* Right side section width */
+.rightSide {
+    width: 80%;
+    margin: 30px 20px 0 20px;
+    padding: 0 25px;
+}
+
+.rightSide header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.rightSide header div:first-of-type {
+    width: 70%;
 }
 
 /* add style to input */
 .flexBox input {
-    width: 40%;
+    width: 80%;
     height: 25px;
     font-size: 20px;
+    margin-bottom: 15px;
+    font-family: 'Lobster', sans-serif;
+    border: 3px double black;
 }
 
 /* add style to adding button */
 
-.flexBox > button:first-of-type {
-    width: 50px;
-    height: 50px;
-    background-color: darkgreen;
-    color: white;
-    border-radius: 50%;
-    border: 1px solid green;
+.addTask {
+    font-size: 20px;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
-/* add style to bottom button */
-
-.flexBox > button:last-of-type {
-    width: 100px;
-    height: 50px;
-    border-radius: 10px;
-    background-color: grey;
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
+/* add flex do li elements */
+li {
+    display: flex;
+    align-items: center;
+    padding: 5px;
 }
 
+/* add style to complete task*/
 .complete {
     text-decoration: line-through;
     color: grey;
+}
+
+/* add style do divs in li element */
+
+li div {
+    padding: 5px 10px;
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+li div:first-of-type {
+    color: grey;
+}
+
+li div:last-of-type {
+    color: red;
+}
+
+
+
+/* add style to bottom button */
+
+.remove {
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    font-family: 'Lobster', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    line-height: 70px;
+    position: relative;
+}
+
+.remove:before {
+    content: "";
+    width: 1px;
+    height: 70px;
+    background-color: black;
+    position: absolute;
+}
+
+.remove:after {
+    content: "";
+    width: 1px;
+    height: 70px;
+    background-color: black;
+    position: absolute;
 }

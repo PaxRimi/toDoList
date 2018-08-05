@@ -3,8 +3,8 @@
         <li>
 
             <h1>Task 1</h1>
-            <button>Delete</button>
-            <button>Complete</button>
+            <div>Delete</div>
+            <div>Complete</div>
         </li>
 */
 
@@ -41,20 +41,31 @@ addTask.addEventListener('click', function () {
     // pobieram wartość inputa do li
     var text = taskInput.value;
     var child = Array.from(parentUl.children);
+    // pobieram wartość inputa priority do li
+    var priority = Number(priorityInput.value);
+    console.log(priority);
 
-    if (text.length > 5 && text.length < 100) {
+    if (text.length > 5 && text.length < 100 && priority > 0 && priority < 11 ) {
 
         // Tworzę nowy element li do listy
         var li = document.createElement('li');
 
         //Dodaje priorytet do elementu li
-        var priority = priorityInput.value
-        priorityInput.value = "";
-        li.setAttribute("data-priority", priority);
+            priorityInput.value = "";
+            li.setAttribute("data-priority", priority);
+
+        //Dodaje style do li wzglendem priorytwtów
+            if (li.dataset.priority < 4) {
+                li.style.backgroundColor = "rgba(0,255,0,0.6)";
+            } else if ( li.dataset.priority > 3 && li.dataset.priority < 7 ) {
+                li.style.backgroundColor = "rgba(255,255,0,0.6)";
+            } else {
+                li.style.backgroundColor = "rgba(255,0,0,0.6)";
+            }
 
         // Tworzę dwa przyciski do elementu li
         // 1 Usuwający
-        var buttonDel = document.createElement('button');
+        var buttonDel = document.createElement('div');
         buttonDel.innerText = "Delete";
         // Dodaje funkcję do buttona usuwającego
         buttonDel.addEventListener('click', function () {
@@ -63,7 +74,7 @@ addTask.addEventListener('click', function () {
         });
 
         // 2 Zatwierdzający zadanie
-        var buttonComp = document.createElement('button');
+        var buttonComp = document.createElement('div');
         buttonComp.innerText = "Complete";
         //Dodaje funkcję do buttona complete
         buttonComp.addEventListener('click', function () {
@@ -107,6 +118,7 @@ addTask.addEventListener('click', function () {
         counter.innerText++;
         taskInput.value = "";
     } else {
+        priorityInput.value = "";
         taskInput.value = "";
         alert("Błąd");
     }
