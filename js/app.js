@@ -11,44 +11,42 @@
 
 // Pobieram ul
 
-var parentUl = document.getElementById('taskList');
+const parentUl = document.getElementById('taskList');
 
 // Pobieram przycisk dodający element
 
-var addTask = document.getElementById('addTaskButton');
+const addTask = document.getElementById('addTaskButton');
 
 // Pobieram input z którego będą pobierane informacje do listy
 
-var taskInput = document.getElementById('taskInput');
+const taskInput = document.getElementById('taskInput');
 
 //Pobieram przycisk usuwający wypełnione zadania
 
-var removeComplete = document.getElementById('removeFinishedTasksButton');
+const removeComplete = document.getElementById('removeFinishedTasksButton');
 
 //Pobieram input określający priorytet zadania
 
-var priorityInput = document.getElementById('priorityInput');
+const priorityInput = document.getElementById('priorityInput');
 
 
 // Pobieram licznik zadań
 
-var counter = document.getElementById('counter');
-console.log(counter);
+const counter = document.getElementById('counter');
 
 // Dodaje funkcję dodawania elementu do listy
 
 addTask.addEventListener('click', function () {
     // pobieram wartość inputa do li
-    var text = taskInput.value;
-    var child = Array.from(parentUl.children);
+    const text = taskInput.value;
+    const child = Array.from(parentUl.children);
     // pobieram wartość inputa priority do li
-    var priority = Number(priorityInput.value);
-    console.log(priority);
+    const priority = Number(priorityInput.value);
 
     if (text.length > 5 && text.length < 100 && priority > 0 && priority < 11 ) {
 
         // Tworzę nowy element li do listy
-        var li = document.createElement('li');
+        let li = document.createElement('li');
 
         //Dodaje priorytet do elementu li
             priorityInput.value = "";
@@ -57,7 +55,7 @@ addTask.addEventListener('click', function () {
         //Dodaje style do li wzglendem priorytwtów
             if (li.dataset.priority < 4) {
                 li.style.backgroundColor = "rgba(0,255,0,0.6)";
-            } else if ( li.dataset.priority > 3 && li.dataset.priority < 7 ) {
+            } else if ( li.dataset.priority > 3 && li.dataset.priority < 8 ) {
                 li.style.backgroundColor = "rgba(255,255,0,0.6)";
             } else {
                 li.style.backgroundColor = "rgba(255,0,0,0.6)";
@@ -65,7 +63,7 @@ addTask.addEventListener('click', function () {
 
         // Tworzę dwa przyciski do elementu li
         // 1 Usuwający
-        var buttonDel = document.createElement('div');
+        let buttonDel = document.createElement('div');
         buttonDel.innerText = "Delete";
         // Dodaje funkcję do buttona usuwającego
         buttonDel.addEventListener('click', function () {
@@ -74,12 +72,12 @@ addTask.addEventListener('click', function () {
         });
 
         // 2 Zatwierdzający zadanie
-        var buttonComp = document.createElement('div');
+        let buttonComp = document.createElement('div');
         buttonComp.innerText = "Complete";
         //Dodaje funkcję do buttona complete
         buttonComp.addEventListener('click', function () {
-            var parentClass = Array.from(this.parentElement.classList);
-            console.log(parentClass);
+            const parentClass = Array.from(this.parentElement.classList);
+
             if (parentClass.indexOf('complete') === -1) {
                 this.parentElement.classList.add('complete');
                 counter.innerText--;
@@ -96,9 +94,9 @@ addTask.addEventListener('click', function () {
         // Dodaje stworzony element do listy wedłóg priorytetu
         //1 sprawdzam czy są już jakieś elementy do porównania
         if (child.length > 0) {
-            var number = 0;
+            let number = 0;
             // pętla i numer wskazuje mi pozycje nowego elementu
-            for (var i = 0; i < child.length; i++) {
+            for (let i = 0; i < child.length; i++) {
                 if (Number(li.dataset.priority) > Number(child[i].dataset.priority)) {
                     number++;
                 }
@@ -127,11 +125,11 @@ addTask.addEventListener('click', function () {
 // Dodaje funkcje usuwającą wykonane zadania
 removeComplete.addEventListener('click', function () {
     //sprawdzam czy lista ma elementy
-   var child = Array.from(parentUl.children);
+   const child = Array.from(parentUl.children);
         if (child.length !== 0) {
             // Jeśli lista ma elemeny sprawdzam czy są już jakieś wykonane, jeśli są usuwam.
             child.forEach(function (element) {
-                var classArr = Array.from(element.classList)
+                const classArr = Array.from(element.classList)
                 if (classArr.indexOf('complete') !== -1 ) {
                     parentUl.removeChild(element);
                 }
